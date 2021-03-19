@@ -12,10 +12,13 @@ class Overview extends Component {
 
   render() {
     console.log(this.props);
+    let {tasks,deleteTask} = this.props;
     return (
       <ul>
-        {this.props.tasks.map((task, i) => (
-          <li key={i}>{task}</li>
+        {tasks.map((task, i) => (
+          <li key={i}>{task}
+          <button onClick={()=>{deleteTask(task)}}>Delete</button>
+          </li>
         ))}
       </ul>
     );

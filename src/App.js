@@ -11,6 +11,7 @@ class App extends Component {
 
     this.input = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleSubmit(e) {
@@ -29,6 +30,11 @@ class App extends Component {
     );
   }
 
+  handleDelete(task){
+    let newTasks = this.state.tasks.filter(item => task!==item);
+    this.setState({tasks:newTasks});
+  }
+
   render() {
     return (
       <div className="App">
@@ -36,7 +42,7 @@ class App extends Component {
           <input type="text" ref={this.input} />
           <button type="submit">Add task</button>
         </form>
-        <Overview tasks={this.state.tasks} />
+        <Overview tasks={this.state.tasks} deleteTask={this.handleDelete}/>
       </div>
     );
   }
